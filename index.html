@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Text Editor</title>
+  <link rel="stylesheet" href="bootstrap.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f4f4;
+    }
+
+    .toolbar {
+      background: #ffffff;
+      padding: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .toolbar button,
+    .toolbar input[type="color"] {
+      background: #8cc98b;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 10px;
+    }
+
+    .toolbar button:hover {
+      background: #ddd;
+    }
+
+    .editor {
+      margin: 20px auto;
+      width: 80%;
+      height: 500px;
+      border: 1px solid #ccc;
+      padding: 20px;
+      background: #fff;
+      overflow-y: auto;
+      outline: none;
+      box-shadow: 20px 20px 20px rgba(0, 162, 0, 0.1);
+      border-radius: 10px;
+    }
+
+.btn {
+  height: 40px;
+  width: 40px;
+  border-radius: 10px;
+  border: none;
+  margin-top: 10px;
+  margin-left: 10px;
+  background-color: #098907;
+  color: #064504;
+}
+#b4{
+  padding: 10px;
+  margin-left: 10px;
+}
+.editor:empty::before {
+  content: attr(data-placeholder);
+  color: #999;
+  pointer-events: none;
+  display: block;
+}
+  </style>
+</head>
+
+<body>
+  <div class="row"></div>
+  <div class="toolbar">
+
+    <div class="col-lg-2 col-md-4 col-sm-4 border-end border-start text-center">
+      <button onclick="format('bold')" class="btn" id="b1">
+        <i class="fas fa-bold"></i>
+      </button>
+      <button onclick="format('italic')" class="btn" id="b2">
+        <i class="fas fa-italic"></i>
+      </button>
+      <button onclick="format('underline')" class="btn" id="b3">
+        <i class="fas fa-underline"></i>
+      </button>
+      <input type="color" onchange="changeColor(this.value)" title="Font Color" id="b4"/>
+    </div>
+
+    <div class="col-lg-2 col-md-4 col-sm-4 border-end text-center">
+      <button onclick="alignText('left')" class="btn" id="b5">
+        <i class="fas fa-align-left"></i>
+      </button>
+      <button onclick="alignText('center')" class="btn" id="b6">
+        <i class="fas fa-align-center"></i>
+      </button>
+      <button onclick="alignText('right')" class="btn" id="b7">
+        <i class="fas fa-align-right"></i>
+      </button>
+      <button onclick="alignText('justify')" class="btn" id="b8">
+        <i class="fas fa-align-justify"></i></button>
+    </div>
+    
+    <div class="col-lg-2 col-md-4 col-sm-4 border-end text-center">
+      <button onclick="undoAction()" class="btn" id="b9">
+        <i class="fas fa-undo"></i>
+      </button>
+      <button onclick="redoAction()" class="btn" id="b10">
+        <i class="fas fa-redo"></i>
+      </button>
+    </div>
+  </div>
+  </div>
+<div id="editor" contenteditable="true" class="editor" data-placeholder="Start typing here..."></div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
